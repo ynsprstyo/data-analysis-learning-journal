@@ -101,9 +101,6 @@ Select *, (RollingPeopleVaccinated/Population)*100
 From PopvsVac
 
 
-
-
-
 -- TEMP TABLE
 
 Drop Table if exists #PercentPopulationVaccinated
