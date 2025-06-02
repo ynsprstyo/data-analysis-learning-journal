@@ -1,6 +1,5 @@
 # 📊 Day 1 – SQL Data Exploration (COVID Dataset)
 
-📅 **Tanggal Belajar:** [1 Juni 2025]  
 🧠 **Modul/Referensi:** Project SQL – COVID 19 Data Exploration (Inspired by Alex The Analyst)
 
 ---
