@@ -22,7 +22,7 @@ UPDATE NashvilleHousing
 SET SaleDateConverted = CONVERT(DATE, SaleDate);
 ```
 
-### 2. Mengisi Data Alamat yang Kosong
+#### 2. Mengisi Data Alamat yang Kosong
 Menggunakan teknik self join berdasarkan ParcelID untuk mengisi PropertyAddress yang null:
 ```sql
 UPDATE a
@@ -33,7 +33,7 @@ JOIN NashvilleHousing b
 WHERE a.PropertyAddress IS NULL;
 ```
 
-### 3. Memisahkan Alamat Menjadi Kolom Sendiri
+#### 3. Memisahkan Alamat Menjadi Kolom Sendiri
 Split PropertyAddress menjadi Address & City:
 ```sql
 ALTER TABLE NashvilleHousing ADD PropertySplitAddress NVARCHAR(255);
@@ -52,7 +52,7 @@ SET OwnerSplitAddress = PARSENAME(REPLACE(OwnerAddress, ',', '.'), 3);
 -- City & State juga ditambahkan dengan cara serupa
 ```
 
-### 4. Normalisasi Field SoldAsVacant
+#### 4. Normalisasi Field SoldAsVacant
 Mengubah value Y/N menjadi Yes/No:
 ```sql
 UPDATE NashvilleHousing
@@ -63,7 +63,7 @@ SET SoldAsVacant = CASE
 END;
 ```
 
-### 5. Menghapus Duplikat
+#### 5. Menghapus Duplikat
 Menggunakan ROW_NUMBER() untuk mencari dan menyaring duplikat:
 ```sql
 WITH RowNumCTE AS (
@@ -75,7 +75,7 @@ WITH RowNumCTE AS (
 DELETE FROM RowNumCTE WHERE row_num > 1;
 ```
 
-### 6. Menghapus Kolom Tidak Terpakai
+#### 6. Menghapus Kolom Tidak Terpakai
 Untuk membersihkan struktur tabel dari kolom yang tidak relevan:
 ```sql
 ALTER TABLE NashvilleHousing
