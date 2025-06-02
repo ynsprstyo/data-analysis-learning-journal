@@ -1,15 +1,15 @@
-## 📅 Day 5 & 6 – Data Cleaning in SQL: Nashville Housing Dataset
+# 📅 Day 5 & 6 – Data Cleaning in SQL: Nashville Housing Dataset
 
-### 🎯 Learning Goals
+## 🎯 Learning Goals
 - Membersihkan dan mempersiapkan data untuk analisis menggunakan SQL
 - Menerapkan teknik transformasi data: standar format, parsing alamat, hingga handling null & duplikat
 - Memahami proses ETL (Extract, Transform, Load) level fundamental
 
 ---
 
-### 🧹 Steps Performed
+## 🧹 Steps Performed
 
-#### 1. Standardisasi Format Tanggal
+### 1. Standardisasi Format Tanggal
 Mengubah `SaleDate` dari format datetime ke `DATE`:
 ```sql
 #### 1. Standardisasi Format Tanggal
@@ -22,7 +22,7 @@ UPDATE NashvilleHousing
 SET SaleDateConverted = CONVERT(DATE, SaleDate);
 ```
 
-#### 2. Mengisi Data Alamat yang Kosong
+### 2. Mengisi Data Alamat yang Kosong
 Menggunakan teknik self join berdasarkan ParcelID untuk mengisi PropertyAddress yang null:
 ```sql
 UPDATE a
@@ -33,7 +33,7 @@ JOIN NashvilleHousing b
 WHERE a.PropertyAddress IS NULL;
 ```
 
-#### 3. Memisahkan Alamat Menjadi Kolom Sendiri
+### 3. Memisahkan Alamat Menjadi Kolom Sendiri
 Split PropertyAddress menjadi Address & City:
 ```sql
 ALTER TABLE NashvilleHousing ADD PropertySplitAddress NVARCHAR(255);
@@ -52,7 +52,7 @@ SET OwnerSplitAddress = PARSENAME(REPLACE(OwnerAddress, ',', '.'), 3);
 -- City & State juga ditambahkan dengan cara serupa
 ```
 
-#### 4. Normalisasi Field SoldAsVacant
+### 4. Normalisasi Field SoldAsVacant
 Mengubah value Y/N menjadi Yes/No:
 ```sql
 UPDATE NashvilleHousing
@@ -63,7 +63,7 @@ SET SoldAsVacant = CASE
 END;
 ```
 
-#### 5. Menghapus Duplikat
+### 5. Menghapus Duplikat
 Menggunakan ROW_NUMBER() untuk mencari dan menyaring duplikat:
 ```sql
 WITH RowNumCTE AS (
@@ -75,24 +75,30 @@ WITH RowNumCTE AS (
 DELETE FROM RowNumCTE WHERE row_num > 1;
 ```
 
-#### 6. Menghapus Kolom Tidak Terpakai
+### 6. Menghapus Kolom Tidak Terpakai
 Untuk membersihkan struktur tabel dari kolom yang tidak relevan:
 ```sql
 ALTER TABLE NashvilleHousing
 DROP COLUMN OwnerAddress, TaxDistrict, PropertyAddress, SaleDate;
 ```
 
-### 🧠 Key Takeaways
+---
+
+## 🧠 Key Takeaways
 - Teknik JOIN, CASE, SUBSTRING, dan PARSENAME() sangat powerful dalam data transformation
 - Menggunakan CTE (WITH) bikin query jadi lebih readable
 - Data cleaning adalah bagian penting sebelum analisis dan visualisasi
 
-### 🛠️ Tools Used
+---
+
+## 🛠️ Tools Used
 - Microsoft SQL Server
 - SSMS (SQL Server Management Studio)
 - Dataset: Nashville Housing (CSV file)
 
-### 📌 Next Steps
+---
+
+## 📌 Next Steps
 - Export data bersih ke file baru atau database untuk visualisasi lebih lanjut
 - Implementasikan cleaning ini di dataset real lain seperti ecommerce, sales, dll
 - Pelajari advanced SQL: CTE rekursif, window functions lanjutan, indexing
