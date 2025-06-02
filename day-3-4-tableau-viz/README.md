@@ -1,6 +1,6 @@
-## 📅 Day 3 & 4 – Tableau Visualization: COVID-19 Dashboard
+# 📅 Tableau Visualization: COVID-19 Dashboard
 
-### 🎯 Learning Goals
+## 🎯 Learning Goals
 - Membuat dashboard interaktif dengan Tableau
 - Mengeksplorasi persebaran kasus & kematian COVID-19 secara global
 - Membandingkan tren infeksi antar negara dan benua
@@ -8,7 +8,7 @@
 
 ---
 
-### 📊 Dashboard Components
+## 📊 Dashboard Components
 
 1. **Global Summary**
    - Total Cases, Total Deaths, and Death Percentage secara global
@@ -28,7 +28,7 @@
 
 ---
 
-### 🔍 Key Insights
+## 🔍 Key Insights
 
 - Negara maju memiliki tingkat infeksi dan pelaporan yang lebih tinggi
 - Tingkat kematian tertinggi berada di Eropa dan Amerika Utara
@@ -37,14 +37,14 @@
 
 ---
 
-### 🛠️ Tools Used
+## 🛠️ Tools Used
 
 - **Tableau Public**
 - Dataset COVID-19 global (Our World in Data)
 
 ---
 
-### 📌 Next Steps
+## 📌 Next Steps
 
 - Kembangkan dashboard lebih interaktif (filter by region/time)
 - Tambahkan metrik tambahan seperti recovery rate dan vaksinasi
